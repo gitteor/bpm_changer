@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPM Match Player</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- (선택) iOS 홈 화면 아이콘 -->
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"> -->
+  <!-- (선택) 탭 파비콘 -->
+  <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+</head>
+<body>
+  <header class="header">
+    <h1>BPM Match Player</h1>
+    <p>각 곡의 현재 BPM을 목표 BPM으로 맞춰 러닝 스텝을 음악에 맞춰보세요.</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>1. 곡 목록</h2>
+
+      <div class="hint">
+        - “현재 BPM”과 “변경 BPM”을 입력하면 재생 시 배속이 자동 계산됩니다.<br />
+        - 배속 = 변경BPM / 현재BPM (예: 180/120 = 1.5x)<br />
+        - iOS/Safari에서 피치 유지 옵션을 최대한 켜지만, 완벽 고정은 브라우저 한계가 있습니다.
+      </div>
+
+      <div id="trackList" class="track-list"></div>
+
+      <div class="button-row">
+        <button id="addRowButton" class="secondary">+ 행 추가</button>
+        <button id="convertAllButton" class="primary">전체 변환</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2. 전체 재생</h2>
+
+      <div class="form-row">
+        <label for="globalTargetBpm">전체 목표 BPM</label>
+        <input type="number" id="globalTargetBpm" value="180" min="1" />
+      </div>
+
+      <div class="button-row">
+        <button id="playAllButton" class="primary">전체 재생</button>
+        <button id="pauseButton" class="secondary">일시정지</button>
+        <button id="stopButton" class="danger">정지</button>
+      </div>
+
+      <p class="hint">
+        전체 재생은 목록 순서대로 재생합니다. 각 곡은 “현재 BPM → 목표 BPM” 비율로 배속 재생됩니다.
+      </p>
+    </section>
+
+    <!-- 숨겨진 오디오 -->
+    <section class="panel" style="display:none;">
+      <audio id="audioPlayer" controls></audio>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>브라우저에서만 동작하는 BPM 매칭 플레이어</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
