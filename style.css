@@ -124,6 +124,20 @@ button:disabled {
   font-size: 12px;
 }
 
+button.tap {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+button.tap:disabled {
+  background: #cfcfcf;
+  color: #666;
+  border-color: #cfcfcf;
+  opacity: 1; /* disabled일 때도 회색이 또 흐려지지 않게 */
+}
+
+
 /* 모바일: 입력칸이 너무 좁아지면 1열로 */
 @media (max-width: 720px) {
   .track-grid {
